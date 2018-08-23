@@ -1,10 +1,25 @@
 <template>
   <div id="app">
     <v-app>
+      <v-toolbar color="indigo" dark fixed app>
+        <v-toolbar-title>MyMarkdown</v-toolbar-title>
+      </v-toolbar>
       <v-content>
-        <Home v-if="!isLogin"></Home>
-        <Editor v-if="isLogin" :user="userData"></Editor>
+        <v-container fluid fill-height>
+          <v-layout
+            justify-center
+            align-center
+          >
+            <v-flex text-xs-center>
+              <Home v-if="!isLogin"></Home>
+              <Editor v-if="isLogin" :user="userData"></Editor>
+            </v-flex>
+          </v-layout>
+        </v-container>
       </v-content>
+      <v-footer color="indigo" app>
+        <span class="white--text">&copy; 2018</span>
+      </v-footer>
     </v-app>
   </div>
 </template>
