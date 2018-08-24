@@ -1,5 +1,5 @@
 <template>
-  <v-containe fuild fill-height>
+  <v-container fuild fill-height>
     <v-layout align-center justify-center>
       <v-flex xs12 sm8 md4>
         <v-card id="home" class="elevation-12">
@@ -16,7 +16,7 @@
         </v-card>
       </v-flex>
     </v-layout>
-  </v-containe>
+  </v-container>
 </template>
 
 <script>
