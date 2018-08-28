@@ -1,6 +1,7 @@
 <template>
   <div id="home">
     <h1>{{ msg }}</h1>
+    <p>Google認証で簡単ログインのシンプルなMarkdownエディター</p>
     <button @click="googleLogin">Googleアカウントでログイン</button>
   </div>
 </template>
