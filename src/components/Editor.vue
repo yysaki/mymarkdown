@@ -1,8 +1,6 @@
 <template>
   <div class="editor">
     <h1>エディター画面</h1>
-    <span>{{ user.displayName }}</span>
-    <button @click="logout">ログアウト</button>
     <div>
       <div class="memoListWrapper">
         <div class="memoList" v-for="(memo,index) in memos" @click="selectMemo(index)" :data-selected="index == selectedIndex">
@@ -58,9 +56,6 @@ export default {
     document.onkeydown = null;
   },
   methods: {
-    logout: function() {
-      firebase.auth().signOut();
-    },
     addMemo: function() {
       this.memos.push({
         markdown: "無題のメモ"
