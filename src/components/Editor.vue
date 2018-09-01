@@ -1,6 +1,5 @@
 <template>
   <div class="editor">
-    <h1>エディター画面</h1>
     <div>
       <div class="memoListWrapper">
         <div class="memoList" v-for="(memo,index) in memos" @click="selectMemo(index)" :data-selected="index == selectedIndex">
