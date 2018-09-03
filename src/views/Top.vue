@@ -1,11 +1,14 @@
 <template>
-  <div id="top">
-    <Home v-if="!isLogin"></Home>
-    <Editor v-if="isLogin" :user="userData"></Editor>
-    <router-link :to="{name: 'terms'}">利用規約</router-link>
-  </div>
+  <Layout>
+    <div id="top">
+      <Home v-if="!isLogin"></Home>
+      <Editor v-if="isLogin" :user="userData"></Editor>
+      <router-link :to="{name: 'terms'}">利用規約</router-link>
+    </div>
+  </Layout>
 </template>
 <script>
+import Layout from "./Layout.vue";
 import Home from "../components/Home.vue";
 import Editor from "../components/Editor.vue";
 export default {
@@ -29,6 +32,7 @@ export default {
     });
   },
   components: {
+    Layout: Layout,
     Home: Home,
     Editor: Editor
   }
