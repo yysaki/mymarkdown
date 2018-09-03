@@ -25,6 +25,10 @@
       </v-content>
       <v-footer color="indigo" app>
         <span class="white--text">&copy; 2018</span>
+        <v-spacer></v-spacer>
+        <span class="white--text">
+          <router-link :to="{name: 'terms'}">利用規約</router-link>
+        </span>
       </v-footer>
     </v-app>
   </div>
