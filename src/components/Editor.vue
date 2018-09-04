@@ -126,7 +126,7 @@ export default {
   &:nth-child(even) {
     background-color: #ccc;
   }
-  &[data-selected="true"] {
+  &.data-selected {
     background-color: #ccf;
   }
 }
