@@ -1,17 +1,44 @@
 <template>
   <div class="editor">
-    <div>
-      <div class="memoListWrapper">
-        <div class="memoList" v-for="(memo,index) in memos" @click="selectMemo(index)" :data-selected="index == selectedIndex">
-          <p class="memoTitle">{{ displayTitle(memo.markdown) }}</p>
-        </div>
-        <v-btn outline color="indigo" @click="addMemo">メモの追加</v-btn>
-        <v-btn outline color="indigo" v-if="memos.length > 1" @click="deleteMemo">選択中のメモを削除</v-btn>
-        <v-btn outline color="indigo" @click="saveMemos">メモの保存</v-btn>
-      </div>
-      <textarea class="markdown" v-model="memos[selectedIndex].markdown"></textarea>
-      <div class="preview markdown-body" v-html="preview()"></div>
-    </div>
+    <v-container fluid grid-list-md>
+      <v-layout wrap>
+        <v-flex xs3>
+          <v-layout column wrap>
+            <v-flex
+              class="memoList"
+              v-for="(memo,index) in memos"
+              @click="selectMemo(index)"
+              :data-selected="index == selectedIndex"
+            >
+              <p class="memoTitle">{{ displayTitle(memo.markdown) }}</p>
+            </v-flex>
+            <v-layout column>
+              <v-flex>
+                <v-btn outline color="indigo" @click="addMemo">メモの追加</v-btn>
+              </v-flex>
+              <v-flex>
+                <v-btn outline color="indigo" v-if="memos.length > 1" @click="deleteMemo">選択中のメモを削除</v-btn>
+              </v-flex>
+              <v-flex>
+                <v-btn outline color="indigo" @click="saveMemos">メモの保存</v-btn>
+              </v-flex>
+            </v-layout>
+          </v-layout>
+        </v-flex>
+        <v-flex xs4>
+          <textarea
+            class="markdown"
+            v-model="memos[selectedIndex].markdown"
+            width="100%"
+          ></textarea>
+        </v-flex>
+        <v-flex xs4
+          class="preview markdown-body"
+          v-html="preview()"
+        >
+        </v-flex>
+      </v-layout>
+    </v-container>
   </div>
 </template>
 
