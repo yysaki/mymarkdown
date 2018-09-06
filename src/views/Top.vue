@@ -12,22 +12,17 @@ import Home from "../components/Home.vue";
 import Editor from "../components/Editor.vue";
 export default {
   name: "top",
-  data() {
-    return {
-      isLogin: false,
-      userData: null
-    };
+  computed: {
+    isLogin () {
+      return this.$store.state.isLogin;
+    },
+    userData () {
+      return this.$store.state.user;
+    }
   },
   created: function() {
     firebase.auth().onAuthStateChanged(user => {
-      console.log(user);
-      if (user) {
-        this.isLogin = true;
-        this.userData = user;
-      } else {
-        this.isLogin = false;
-        this.userData = null;
-      };
+      this.$store.dispatch('setCredential', user);
     });
   },
   components: {
