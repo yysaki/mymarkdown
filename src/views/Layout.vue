@@ -6,7 +6,7 @@
         <v-spacer></v-spacer>
         <span v-if="isLogin">
           <v-toolbar-items>
-            <v-toolbar-title color="indigo">{{ userData.displayName }}</v-toolbar-title>
+            <v-toolbar-title color="indigo">{{ user.displayName }}</v-toolbar-title>
             <v-btn color="indigo darken-4" @click="logout">ログアウト</v-btn>
           </v-toolbar-items>
         </span>
@@ -35,26 +35,14 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "layout",
-  data() {
-    return {
-      isLogin: false,
-      userData: null
-    };
-  },
-  created: function() {
-    firebase.auth().onAuthStateChanged(user => {
-      console.log(user);
-      if (user) {
-        this.isLogin = true;
-        this.userData = user;
-      } else {
-        this.isLogin = false;
-        this.userData = null;
-      };
-    });
-  },
+  computed: mapState([
+    'isLogin',
+    'user'
+  ]),
   methods: {
     logout: function() {
       firebase.auth().signOut();
