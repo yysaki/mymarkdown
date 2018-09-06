@@ -2,7 +2,7 @@
   <Layout>
     <div id="top">
       <Home v-if="!isLogin"></Home>
-      <Editor v-if="isLogin" :user="userData"></Editor>
+      <Editor v-if="isLogin" :user="user"></Editor>
     </div>
   </Layout>
 </template>
@@ -10,16 +10,13 @@
 import Layout from "./Layout.vue";
 import Home from "../components/Home.vue";
 import Editor from "../components/Editor.vue";
+import { mapState } from "vuex";
 export default {
   name: "top",
-  computed: {
-    isLogin () {
-      return this.$store.state.isLogin;
-    },
-    userData () {
-      return this.$store.state.user;
-    }
-  },
+  computed: mapState([
+    'isLogin',
+    'user'
+  ]),
   created: function() {
     firebase.auth().onAuthStateChanged(user => {
       this.$store.dispatch('setCredential', user);
