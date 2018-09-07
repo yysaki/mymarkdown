@@ -8,7 +8,22 @@
   "scripts": {
     "postinstall": "npm run build",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --inline --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "test": "jest"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      ".*\\.(vue)$": "vue-jest",
+      "^.+\\.(js)$": "<rootDir>/node_modules/babel-jest"
+    },
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    }
   },
   "dependencies": {
     "vue": "^2.5.3",
@@ -20,13 +35,16 @@
     "not ie <= 8"
   ],
   "devDependencies": {
+    "@vue/test-utils": "^1.0.0-beta.24",
     "babel-core": "^6.26.0",
+    "babel-jest": "^23.4.2",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
     "babel-preset-stage-2": "^6.24.1",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.7",
     "file-loader": "^1.1.4",
+    "jest": "^23.5.0",
     "marked": "^0.5.0",
     "node-sass": "^4.5.3",
     "sass-loader": "^6.0.6",
@@ -34,6 +52,7 @@
     "style-loader": "^0.13.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
+    "vue-jest": "^2.6.0",
     "vue-loader": "^13.0.5",
     "vue-router": "^3.0.1",
     "vue-template-compiler": "^2.5.3",
