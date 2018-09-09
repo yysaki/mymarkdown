@@ -12,16 +12,7 @@
         </span>
       </v-toolbar>
       <v-content>
-        <v-container fluid fill-height>
-          <v-layout
-            justify-center
-            align-center
-          >
-            <v-flex text-xs-center>
-              <slot></slot>
-            </v-flex>
-          </v-layout>
-        </v-container>
+        <slot></slot>
       </v-content>
       <v-footer color="indigo" app>
         <span class="white--text">&copy; 2018</span>

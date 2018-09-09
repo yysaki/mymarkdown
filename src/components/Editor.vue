@@ -1,8 +1,8 @@
 <template>
   <div class="editor">
-    <v-container fluid grid-list-md>
+    <v-container fluid pa-0>
       <v-layout wrap>
-        <v-flex xs3>
+        <v-flex xs3 class="side-bar">
           <v-layout column wrap>
             <v-flex
               class="memoList"
@@ -29,7 +29,6 @@
           <textarea
             class="markdown"
             v-model="memos[selectedIndex].markdown"
-            width="100%"
           ></textarea>
         </v-flex>
         <v-flex xs4
@@ -113,10 +112,8 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.memoListWrapper {
-  width: 19%;
-  float: left;
-  border-top: 1px solid #000;
+.side-bar {
+  overflow: scroll;
 }
 .memoList {
   padding: 10px;
@@ -136,13 +133,13 @@ export default {
   white-space: nowrap;
   overflow: hidden;
 }
-.addMemoBtn {
-  margin-top: 20px;
-}
 .markdown {
   float: left;
-  width: 40%;
-  height: 500px;
+  height: 100%;
+  width: 100%;
+  background: #eee;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
 }
 .preview {
   float: left;
