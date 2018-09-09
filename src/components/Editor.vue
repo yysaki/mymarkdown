@@ -43,6 +43,11 @@
 
 <script>
 import marked from "marked";
+
+marked.setOptions({
+  breaks: true,
+});
+
 export default {
   name: "editor",
   props: ["user"],
@@ -103,7 +108,9 @@ export default {
       this.selectedIndex = index;
     },
     preview: function() {
-      return marked(this.memos[this.selectedIndex].markdown);
+      return marked(this.memos[this.selectedIndex].markdown)
+        .replace(/\[ \]/g, '<input type="checkbox"></input>')
+        .replace(/\[x\]/g, '<input type="checkbox" checked="checked"></input>');
     },
     displayTitle: function(text) {
       return text.split(/\n/)[0];
