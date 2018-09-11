@@ -4,6 +4,27 @@
       <v-layout wrap>
         <v-flex xs3 class="side-bar">
           <v-layout column wrap>
+            <v-flex>
+              <v-toolbar height="40px" class="icon-bar">
+                <v-layout justify-space-around>
+                  <f-flex>
+                    <v-btn icon>
+                      <v-icon color="indigo" @click="addMemo">note_add</v-icon>
+                    </v-btn>
+                  </f-flex>
+                  <f-flex>
+                    <v-btn icon>
+                      <v-icon color="indigo" @click="saveMemos">save</v-icon>
+                    </v-btn>
+                  </f-flex>
+                  <f-flex>
+                    <v-btn icon>
+                      <v-icon color="indigo" @click="deleteMemo">delete_outline</v-icon>
+                    </v-btn>
+                  </f-flex>
+                </v-layout>
+              </v-toolbar>
+            </v-flex>
             <v-flex
               class="memoList"
               v-for="(memo,index) in memos"
@@ -12,17 +33,6 @@
             >
               <p class="memoTitle">{{ displayTitle(memo.markdown) }}</p>
             </v-flex>
-            <v-layout column>
-              <v-flex>
-                <v-btn outline color="indigo" @click="addMemo">メモの追加</v-btn>
-              </v-flex>
-              <v-flex>
-                <v-btn outline color="indigo" v-if="memos.length > 1" @click="deleteMemo">選択中のメモを削除</v-btn>
-              </v-flex>
-              <v-flex>
-                <v-btn outline color="indigo" @click="saveMemos">メモの保存</v-btn>
-              </v-flex>
-            </v-layout>
           </v-layout>
         </v-flex>
         <v-flex xs4>
@@ -121,6 +131,9 @@ export default {
 <style lang="scss" scoped>
 .side-bar {
   overflow: scroll;
+}
+.icon-bar {
+  border-bottom: 1px solid #000;
 }
 .memoList {
   padding: 10px;
