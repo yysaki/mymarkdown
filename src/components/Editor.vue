@@ -7,21 +7,24 @@
             <v-flex>
               <v-toolbar height="40px" class="icon-bar">
                 <v-layout justify-space-around>
-                  <f-flex>
-                    <v-btn icon>
+                  <v-tooltip bottom>
+                    <v-btn icon slot="activator">
                       <v-icon color="indigo" @click="addMemo">note_add</v-icon>
                     </v-btn>
-                  </f-flex>
-                  <f-flex>
-                    <v-btn icon>
+                    <span>メモの追加</span>
+                  </v-tooltip>
+                  <v-tooltip bottom>
+                    <v-btn icon slot="activator">
                       <v-icon color="indigo" @click="saveMemos">save</v-icon>
                     </v-btn>
-                  </f-flex>
-                  <f-flex>
-                    <v-btn icon>
+                    <span>メモの保存</span>
+                  </v-tooltip>
+                  <v-tooltip bottom>
+                    <v-btn icon slot="activator">
                       <v-icon color="indigo" @click="deleteMemo">delete_outline</v-icon>
                     </v-btn>
-                  </f-flex>
+                    <span>洗濯中のメモを削除</span>
+                  </v-tooltip>
                 </v-layout>
               </v-toolbar>
             </v-flex>
