@@ -15,9 +15,19 @@
                   </v-tooltip>
                   <v-tooltip bottom>
                     <v-btn icon slot="activator">
-                      <v-icon color="indigo" @click="saveMemos">save</v-icon>
+                      <div v-if="!isSaving">
+                        <v-icon color="indigo" @click="saveMemos">save</v-icon>
+                      </div>
+                      <div v-else>
+                        <v-progress-circular
+                          :size="24"
+                          indeterminate
+                          color="indigo"
+                        /></v-progress-circular>
+                      </div>
                     </v-btn>
-                    <span>メモの保存</span>
+                    <span v-if="!isSaving">メモの保存</span>
+                    <span v-else>保存中...</span>
                   </v-tooltip>
                   <v-tooltip bottom>
                     <v-btn icon slot="activator">
@@ -71,7 +81,8 @@ export default {
           markdown: ""
         }
       ],
-      selectedIndex: 0
+      selectedIndex: 0,
+      isSaving: false
     };
   },
   created: function() {
@@ -111,11 +122,20 @@ export default {
       }
     },
     saveMemos: function() {
+      var self = this;
+
+      self.isSaving = true;
       firebase
         .firestore()
         .collection('memos')
         .doc(this.user.uid)
-        .set({val: this.memos});
+        .set({val: this.memos})
+        .then(function() {
+          self.isSaving = false;
+        })
+        .catch(function(error) {
+          self.isSaving = false;
+        });
     },
     selectMemo: function(index) {
       this.selectedIndex = index;
