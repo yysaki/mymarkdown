@@ -1,8 +1,22 @@
 <template>
   <Layout>
     <div id="top">
-      <Home v-if="!isLogin"></Home>
-      <Editor v-if="isLogin" :user="user"></Editor>
+      <div v-if="!hasSetCredential">
+        <v-container fuild fill-height>
+          <v-layout align-center justify-center>
+            <v-flex xs1>
+              <v-progress-circular
+                indeterminate
+                color="indigo"
+              /></v-progress-circular>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </div>
+      <div v-else>
+        <Home v-if="!isLogin"></Home>
+        <Editor v-if="isLogin" :user="user"></Editor>
+      </div>
     </div>
   </Layout>
 </template>
@@ -15,6 +29,7 @@ export default {
   name: "top",
   computed: mapState([
     'isLogin',
+    'hasSetCredential',
     'user'
   ]),
   created: function() {

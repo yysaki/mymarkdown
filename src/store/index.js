@@ -6,6 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     isLogin: false,
+    hasSetCredential: false,
     user: null
   },
   mutations: {
@@ -17,6 +18,7 @@ export default new Vuex.Store({
         state.isLogin = false;
         state.user = null;
       }
+      state.hasSetCredential = true;
     }
   },
   actions: {
