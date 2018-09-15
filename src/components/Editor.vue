@@ -30,9 +30,38 @@
                     <span v-else>保存中...</span>
                   </v-tooltip>
                   <v-tooltip bottom>
-                    <v-btn icon slot="activator">
-                      <v-icon color="indigo" @click="deleteMemo">delete_outline</v-icon>
-                    </v-btn>
+                    <div slot="activator">
+                      <v-dialog
+                        v-model="deletionDialog"
+                        width="500"
+                      >
+                        <v-btn icon slot="activator">
+                          <v-icon color="indigo" >delete_outline</v-icon>
+                        </v-btn>
+                        <v-card>
+                          <v-card-text>
+                            本当に削除しますか？
+                          </v-card-text>
+                          <v-card-actions>
+                            <v-spacer></v-spacer>
+                            <v-btn
+                              color="secondary"
+                              flat="flat"
+                              @click="deletionDialog = false"
+                            >
+                              いい
+                            </v-btn>
+                            <v-btn
+                              color="primary"
+                              flat="flat"
+                              @click="deleteMemo"
+                            >
+                              はい
+                            </v-btn>
+                          </v-card-actions>
+                        </v-card>
+                      </v-dialog>
+                    </div>
                     <span>洗濯中のメモを削除</span>
                   </v-tooltip>
                 </v-layout>
@@ -82,7 +111,8 @@ export default {
         }
       ],
       selectedIndex: 0,
-      isSaving: false
+      isSaving: false,
+      deletionDialog: false,
     };
   },
   created: function() {
@@ -120,6 +150,7 @@ export default {
       if (this.selectedIndex > 0) {
         this.selectedIndex--;
       }
+      this.deletionDialog = false;
     },
     saveMemos: function() {
       var self = this;
