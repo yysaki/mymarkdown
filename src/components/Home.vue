@@ -1,5 +1,5 @@
 <template>
-  <v-container fuild fill-height>
+  <v-container class="home-container" fuild fill-height>
     <v-layout align-center justify-center>
       <v-flex xs12 sm8 md4>
         <v-card id="home" class="elevation-12">
@@ -37,3 +37,8 @@ export default {
   }
 };
 </script>
+<style>
+.home-container {
+  height: 100vh;
+}
+</style>

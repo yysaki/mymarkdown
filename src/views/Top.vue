@@ -2,7 +2,7 @@
   <Layout>
     <div id="top">
       <div v-if="!hasSetCredential">
-        <v-container fuild fill-height>
+        <v-container class="loading-container" fuild fill-height>
           <v-layout align-center justify-center>
             <v-flex xs1>
               <v-progress-circular
@@ -45,7 +45,12 @@ export default {
  };
 </script>
 <style lang="scss">
+.loading-container {
+  height: 100vh;
+}
+
 #top {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
 }
 </style>
+

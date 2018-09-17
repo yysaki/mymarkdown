@@ -1,7 +1,7 @@
 <template>
   <div class="editor">
-    <v-container fluid pa-0>
-      <v-layout wrap>
+    <v-container class="editor-container" fluid pa-0>
+      <v-layout wrap fill-height>
         <v-flex xs3 class="side-bar">
           <v-layout column wrap>
             <v-flex>
@@ -183,6 +183,9 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.editor-container {
+  height: 100vh;
+}
 .side-bar {
   overflow: scroll;
 }
