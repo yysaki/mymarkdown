@@ -62,7 +62,7 @@
                         </v-card>
                       </v-dialog>
                     </div>
-                    <span>洗濯中のメモを削除</span>
+                    <span>選択中のメモを削除</span>
                   </v-tooltip>
                 </v-layout>
               </v-toolbar>
