@@ -49,7 +49,7 @@
                               flat="flat"
                               @click="deletionDialog = false"
                             >
-                              いい
+                              いいえ
                             </v-btn>
                             <v-btn
                               color="primary"
