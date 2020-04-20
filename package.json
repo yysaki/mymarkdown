@@ -48,7 +48,7 @@
     "marked": "^0.8.2",
     "node-sass": "^4.5.3",
     "sass-loader": "^6.0.6",
-    "shitajicss": "^4.6.0",
+    "shitajicss": "^5.1.0",
     "style-loader": "^0.13.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
